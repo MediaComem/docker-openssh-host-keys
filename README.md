@@ -21,6 +21,7 @@ This command will generate and copy a set of SSH host keys to the
 
 ```bash
 docker run \
+  --rm \
   -e SSH_HOST_KEYS_OWNER=root \
   -e SSH_HOST_KEYS_GROUP=root \
   -e SSH_HOST_KEYS_MODE=644 \

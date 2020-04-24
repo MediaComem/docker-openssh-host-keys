@@ -40,6 +40,7 @@ is_interactive() {
 owner="${SSH_HOST_KEYS_OWNER:-root}"
 group="${SSH_HOST_KEYS_GROUP:-root}"
 mode="${SSH_HOST_KEYS_MODE:-644}"
+dir_mode="$SSH_HOST_KEYS_DIRECTORY_MODE"
 target_dir=/target
 
 # Make sure target directory is empty.
@@ -80,7 +81,7 @@ ls -la /target
 
 # Set ownership and permissions of target directory.
 chown "$owner:$group" /target
-chmod 700 /target
+test -n "$dir_mode" && chmod "$dir_mode" /target
 
 echo
 echo_color "$COLOR_GREEN" "Done"
